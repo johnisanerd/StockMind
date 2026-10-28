@@ -39,12 +39,12 @@ const APIFY_ACTORS = {
     }
   },
   youtube: {
-    actor: 'bernardo/youtube-scraper',
+    actor: 'johnvc/youtube-shorts-api',
     parseResult: (data: any): PostStats => {
       return {
         views: data.viewCount || 0,
         likes: data.likes || 0,
-        comments: data.numberOfComments || 0,
+        comments: data.commentsCount || data.numberOfComments || 0,
         watchTimeSeconds: data.watchTime || undefined,
       };
     }
